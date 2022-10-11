@@ -22,9 +22,10 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 		this.auditDao = auditDao;
 		curBalance = new BigDecimal("0.00");
 	}
-
-	@Override // get all items from inventory file, filtered items that are not 0 in qty and
-				// return in an array list
+	
+	// get all items from inventory file, filtered items that are not 0 in qty and 
+	// return in an array list
+	@Override 
 	public List<Item> getAllItems() throws VendingMachineDaoException {
 		List<Item> inventory = dao.getAllItems();
 		inventory = inventory.stream().filter(item -> item.getQuantity() > 0).collect(Collectors.toList());

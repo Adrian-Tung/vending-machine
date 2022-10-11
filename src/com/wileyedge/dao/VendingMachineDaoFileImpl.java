@@ -19,9 +19,17 @@ import com.wileyedge.dto.Item;
 public class VendingMachineDaoFileImpl implements VendingMachineDao {
 	
 	private Map<String, Item> inventory = new HashMap<>();
-	public static final String INVENTORY_FILE = "inventory.txt";
+	public final String INVENTORY_FILE;
 	public static final String DELIMITER = "::";
+	
+	public VendingMachineDaoFileImpl(){
+		INVENTORY_FILE = "inventory.txt";
+	}
 
+	public VendingMachineDaoFileImpl(String INVENTORYFILE){
+		INVENTORY_FILE = INVENTORYFILE;
+	}
+	
 	@Override
 	public List<Item> getAllItems() throws VendingMachineDaoException {
 		loadInventory();
